@@ -3,7 +3,7 @@ import requests
 
 class TestCanaryApp(unittest.TestCase):
     def setUp(self):
-        self.base_url = "http://localhost:8082"  # Using the Ingress controller port
+        self.base_url = "http://canary-demo.local"  # Using the Ingress controller port
 
     def test_homepage_main(self):
         response = requests.get(self.base_url, headers={"Host": "canary-demo.local"})
