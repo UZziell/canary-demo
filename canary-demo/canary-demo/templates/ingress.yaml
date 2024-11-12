@@ -39,4 +39,44 @@ spec:
                 name: {{ .Release.Name }}
                 port: 
                   number: {{ .Values.service.port }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-grafana-ingress
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  rules:
+    - host: grafana.kube
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-grafana
+                port:
+                  number: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-prometheus-ingress
+  labels:
+    app: {{ .Release.Name }}
+spec:
+  rules:
+    - host: prom.kube
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus-kube-prometheus-prometheus
+                port:
+                  number: 9090
+---
+
 {{- end }}
