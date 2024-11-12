@@ -42,3 +42,4 @@ helm install prometheus prometheus-community/kube-prometheus-stack -n canary-dem
 ### Services ![Services](./screenshots/Services.png)
 ### Ingresses ![Ingresses](./screenshots/Ingresses.png)
 ### Tests output ![Tests](./screenshots/run_tests.png)
+### Rollback ![Rollback](./screenshots/rollback.png)
